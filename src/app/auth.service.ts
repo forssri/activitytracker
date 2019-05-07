@@ -50,7 +50,8 @@ export class AuthService {
       uid,
       email,
       displayName,
-      photoURL
+      photoURL,
+      groupId: 'lHdOz688JQ431jitpc5a'
     };
 
     return userRef.set(data, { merge: true });
