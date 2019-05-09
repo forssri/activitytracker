@@ -10,9 +10,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AddactivityComponent } from './addactivity/addactivity.component';
+import { ActivitylistComponent } from './activitylist/activitylist.component';
+import { FilteractivityComponent } from './filteractivity/filteractivity.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, AddactivityComponent, ActivitylistComponent, FilteractivityComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
