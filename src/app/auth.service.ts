@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, startWith, tap } from 'rxjs/operators';
 
 import { User } from './models/user';
 
@@ -32,7 +32,9 @@ export class AuthService {
           // Logged out
           return of(null);
         }
-      })
+      }),
+      tap(user => localStorage.setItem('user', JSON.stringify(user))),
+      startWith(JSON.parse(localStorage.getItem('user')))
     );
   }
   async googleSignin() {
