@@ -1,16 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   currentUser: User;
-  constructor(public auth: AuthService) {}
+  destroyed = new Subject();
+  constructor(public auth: AuthService, private router: Router) {}
 
-  ngOnInit() {}
-  googleLogin() {}
+  ngOnInit() {
+    this.auth.user$.pipe(takeUntil(this.destroyed)).subscribe(user => {
+      if (user) {
+        this.router.navigate(['/']);
+      }
+    });
+  }
+  ngOnDestroy() {
+    this.destroyed.next();
+  }
 }

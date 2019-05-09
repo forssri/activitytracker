@@ -17,6 +17,7 @@
     <h3>Howdy, {{ user.displayName }}</h3>
     <img [src]="user.photoURL" />
     <p>UID: {{ user.uid }}</p>
+    <p>Group ID: {{ user.groupId }}</p>
     <button (click)="auth.signOut()">Logout</button>
   </div>
 </ng-template>
