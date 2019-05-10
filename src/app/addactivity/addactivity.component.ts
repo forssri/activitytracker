@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivityService } from '../activity.service';
 
 @Component({
   selector: 'app-addactivity',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addactivity.component.sass']
 })
 export class AddactivityComponent implements OnInit {
+  type: string;
+  value: string;
+  constructor(private activityService: ActivityService) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {}
+  addActivity() {
+    this.activityService.addActivity({
+      type: this.type,
+      value: this.value,
+      user: null
+    });
   }
-
 }

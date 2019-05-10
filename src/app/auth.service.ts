@@ -17,6 +17,7 @@ import { User } from './models/user';
 })
 export class AuthService {
   user$: Observable<User>;
+  user: User;
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -36,6 +37,10 @@ export class AuthService {
       tap(user => localStorage.setItem('user', JSON.stringify(user))),
       startWith(JSON.parse(localStorage.getItem('user')))
     );
+    this.setUserId();
+  }
+  private setUserId() {
+    this.user$.subscribe(user => (this.user = user));
   }
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();

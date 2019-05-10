@@ -1,3 +1,5 @@
-<p>
-  activitylist works!
-</p>
+<div *ngIf="activities">
+  <div *ngFor="let a of activities">
+    <app-activity [activity]="a"></app-activity>
+  </div>
+</div>

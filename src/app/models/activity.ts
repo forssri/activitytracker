@@ -1,6 +1,8 @@
+import { User } from './user';
+
 export interface Activity {
-  uid: string;
-  userId: string;
+  activityId?: string;
+  user: User;
   type: string;
   value: string;
 }

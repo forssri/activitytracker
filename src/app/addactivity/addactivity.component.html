@@ -1,3 +1,6 @@
-<p>
-  addactivity works!
-</p>
+<select [(ngModel)]="type">
+  <option value="walk">Walk</option>
+  <option value="run">Run</option>
+</select>
+<input type="text" [(ngModel)]="value" />
+<button (click)="addActivity()">Add</button>
